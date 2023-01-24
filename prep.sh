@@ -1,9 +1,9 @@
-value=$1
+day=$1
 
-echo $value > day.txt
-cp -r template $value
+echo $day > day.txt
+cp -r template $day
 
 echo "
 [[bin]]
-name = \"$value\"
-path = \"$value/main.rs\"" >> cargo.toml
+name = \"$day\"
+path = \"$day/main.rs\"" >> cargo.toml
