@@ -3,6 +3,9 @@ name = "advent-of-code-2015"
 version = "0.1.0"
 edition = "2021"
 
+[dependencies]
+md5 = "0.7.0"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [[bin]]
 name = "template"
@@ -19,3 +22,7 @@ path = "02/main.rs"
 [[bin]]
 name = "03"
 path = "03/main.rs"
+
+[[bin]]
+name = "04"
+path = "04/main.rs"
