@@ -33,22 +33,22 @@ fn parse_input(filename: &str) -> Vec<Vec<u32>> {
     return slice2d;
 }
 
-fn explore(map: &Vec<Vec<u32>>, visited: HashSet<usize>, loc: usize, current_lowest_cost: u32, cost: u32) -> u32 {
-    if visited.len() >= map.len() {
-        return min(current_lowest_cost, cost);
+fn explore(map: &Vec<Vec<u32>>, visited: &HashSet<usize>, from: usize, to: usize, current_lowest_cost: u32, cost: u32) -> u32 {
+    let next_cost = cost + map[from][to];
+    if next_cost >= current_lowest_cost {
+        return current_lowest_cost;
+    }
+    let mut next = visited.clone();
+    next.insert(to);
+    if next.len() >= map.len() {
+        return min(current_lowest_cost, next_cost);
     }
     let mut lowest_cost = current_lowest_cost;
     for i in 0..map.len() {
         if visited.contains(&i) {
             continue;
         }
-        let next_cost = cost + map[loc][i];
-        if next_cost >= current_lowest_cost {
-            continue;
-        }
-        let mut next = visited.clone();
-        next.insert(i);
-        let new_cost = explore(map, next, i, current_lowest_cost, next_cost);
+        let new_cost = explore(map, &next, to, i, lowest_cost, next_cost);
         lowest_cost = min(lowest_cost, new_cost);
     }
     return lowest_cost;
@@ -58,9 +58,7 @@ fn part1(filename: &str) -> u32 {
     let map = parse_input(filename);
     let mut cost = u32::MAX;
     for i in 0..map.len() {
-        let mut set = HashSet::new();
-        set.insert(i);
-        let new_cost = explore(&map, set, i, cost, 0);
+        let new_cost = explore(&map, &HashSet::new(), i, i, cost, 0);
         cost = min(cost, new_cost);
     }
     return cost;
