@@ -11,18 +11,18 @@ fn parse_input(filename: &str) -> Vec<(i64, i64, i64)> {
             split.next().expect("must be int").parse::<i64>().unwrap());
         lines.push(dimension)
     }
-    return lines.to_vec();
+    lines.to_vec()
 }
 
 fn part1(filename: &str) -> i64 {
     let input = parse_input(filename);
     println!("{:?}", input);
-    return 0;
+    0
 }
 
 fn _part2(filename: &str) -> i64 {
     println!("{}", filename);
-    return 0;
+    0
 }
 
 fn main() {
