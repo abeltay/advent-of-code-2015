@@ -11,7 +11,7 @@ My attempt at <https://adventofcode.com/2015>
 
 ## To set up cookie for `./input.sh`
 1. Login to [AoC](https://adventofcode.com/)
-2. Most requests should use your session cookie, copy it. Hint: It contains "session="
+2. Most requests should use your session cookie, copy it. It starts with "session=" until ";"
 3. Put it into `cookie.txt`
 
 ## To test the template
